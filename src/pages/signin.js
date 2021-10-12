@@ -1,9 +1,12 @@
 import React, {useState} from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 
+import SideImage from "../assets/imgg.jpg";
+
 const SignIn =()=>{
+    const history = useHistory();
     const initialState = {
         email:"",
         password:""
@@ -16,8 +19,29 @@ const SignIn =()=>{
     const [formValue, setFormValue] = useState({...initialState});
 
     const handleSubmit = (e) => {
+        debugger
         e.preventDefault();
+        let getAuth = JSON.parse(localStorage.getItem("authUser"));
         console.log(formValue)
+
+        if(getAuth !== null){
+            if(formValue.email == "" || formValue.password == ""){
+                alert("All fields are required")
+                return
+            }else if(formValue.email !== getAuth.email || formValue.password !== getAuth.password){
+                alert("Invalid credential")
+                return
+            }else if(formValue.email === getAuth.email && formValue.password === getAuth.password){
+                alert("proceed to dashboard");
+                history.push("/dashboard");
+                return
+            }else{
+                return
+            }
+        }else{
+            alert("You need to create an account")
+        }
+       
     }
 
     const handleEmailChange = (e) =>{
@@ -39,7 +63,9 @@ const SignIn =()=>{
 
     return(
         <div className="formContainer">
-            <div className="appAside" />
+            <div className="appAside">
+                <img src={SideImage} width="320" height="220"/>
+            </div>
             <div className="appForm"> 
                 <div className="formCenter">
                     <form className="formFields" autoComplete="off">
@@ -75,7 +101,7 @@ const SignIn =()=>{
 
                         <div className="formField">
                         <Stack spacing={2} direction="row">
-                            <Button variant="contained" className="formFieldButton" onClick={(e)=>handleSubmit(e)}>Sign In</Button>{" "}
+                            <Button variant="contained" className="formFieldButton" onClick={handleSubmit}>Sign In</Button>{" "}
                             <Button variant="text">
                                 <Link to="/" className="formFieldLink">
                                     Create an account

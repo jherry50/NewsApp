@@ -1,9 +1,11 @@
 import React, {useState} from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
+import SideImage from "../assets/imgg.jpg";
 
 const SignUp =()=>{
+    const history = useHistory();
     const initialState = {
         firstName: "",
         lastName: "",
@@ -21,6 +23,8 @@ const SignUp =()=>{
     const handleSubmit = () => {
         console.log(formValue);
         localStorage.setItem("authUser", JSON.stringify(formValue));
+        alert("Account created successfully,proceed to login")
+        history.push("/signin")
     }
 
     const handleEmailChange = (e) =>{
@@ -61,9 +65,12 @@ const SignUp =()=>{
 
     return(
         <div className="formContainer">
-            <div className="appAside" />
+            <div className="appAside">
+                <img src={SideImage} width="320" height="220"/>
+            </div>
             <div className="appForm"> 
                 <div className="formCenter">
+                    <h2 style={{color: "#fff"}}>Create an Account</h2>
                     <form className="formFields" autoComplete="off">
                         <div className="formField">
                             <label className="formFieldLabel" htmlFor="name">
@@ -144,7 +151,7 @@ const SignUp =()=>{
                                 <Button variant="contained" className="formFieldButton" onClick={(e)=>handleSubmit(e)}>Sign Up</Button>{" "}
                                 <Button variant="text">
                                     <Link to="/signin" className="formFieldLink">
-                                        I'm already member
+                                        I'm already a member
                                     </Link> 
                                 </Button>     
                             </Stack>

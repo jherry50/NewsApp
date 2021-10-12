@@ -22,6 +22,10 @@ import ReadMoreIcon from '@mui/icons-material/ReadMore';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
+import CircularProgress from '@mui/material/CircularProgress';
+
+import Header from '../components/header';
+import Footer from '../components/footer';
 
 const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
@@ -46,6 +50,7 @@ const News =()=>{
     const handleExpandClick = () => {
       setExpanded(!expanded);
     };
+    const [loader, setLoader] = useState(true);
     const [cardData, setCardData] = useState([]);
 
     useEffect(()=>{
@@ -53,13 +58,16 @@ const News =()=>{
             .then(function (response) {
                 // handle success
                 console.log(response);
-                setCardData(response.data.articles)
+                setCardData(response.data.articles);
+                setLoader(false);
             })
             .catch(function (error) {
                 // handle error
                 console.log(error);
+                setLoader(false);
             })
             .then(function () {
+                setLoader(false);
                 // always executed
             });
     },[])
@@ -69,67 +77,77 @@ const News =()=>{
     }
     return(
         <Box sx={{ flexGrow: 2 }}>
+            <Header/>
             <Grid container spacing={2}>
                 {
-                    cardData.map((item,index) => {
-                        return(
-                            <Grid item xs={12} md={6}>
-                                <Card key={index} sx={{ maxWidth: "100%", minHeight: 400 }}>
-                                    <CardHeader
-                                        avatar={
-                                        <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-                                            R
-                                        </Avatar>
-                                        }
-                                        action={
-                                        <IconButton aria-label="settings">
-                                            <MoreVertIcon />
-                                        </IconButton>
-                                        }
-                                        title={item.author}
-                                        subheader={formatDate(item.publishedAt)}
-                                    />
-                                    <CardMedia
-                                        component="img"
-                                        height="194"
-                                        image={item.urlToImage}
-                                        alt="Article Image"
-                                    />
-                                    <CardContent>
-                                        <Typography variant="body2" color="text.secondary">
-                                        {item.description}
-                                        </Typography>
-                                    </CardContent>
-                                    <CardActions disableSpacing>
-                                        {/* <IconButton aria-label="add to favorites">
-                                            <FavoriteIcon />
-                                        </IconButton> */}
-                                        <IconButton aria-label="share">
-                                            <a href={item.url} target="_blank">
-                                                <ReadMoreIcon />
-                                            </a>
-                                        </IconButton>
-                                        <ExpandMore
-                                        expand={expanded}
-                                        onClick={handleExpandClick}
-                                        aria-expanded={expanded}
-                                        aria-label="show more"
-                                        >
-                                            <ExpandMoreIcon />
-                                        </ExpandMore>
-                                    </CardActions>
-                                    <Collapse in={expanded} timeout="auto" unmountOnExit>
+                    loader ?
+                    <div className="pageLoader">
+                         <CircularProgress/>
+                    </div>
+                        :
+                    <>
+                        {
+                            cardData.map((item,index) => {
+                            return(
+                                <Grid key={index} item xs={12} md={6}>
+                                    <Card  sx={{ maxWidth: "100%", minHeight: 400 }}>
+                                        <CardHeader
+                                            avatar={
+                                            <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
+                                                R
+                                            </Avatar>
+                                            }
+                                            action={
+                                            <IconButton aria-label="settings">
+                                                <MoreVertIcon />
+                                            </IconButton>
+                                            }
+                                            title={item.author}
+                                            subheader={formatDate(item.publishedAt)}
+                                        />
+                                        <CardMedia
+                                            component="img"
+                                            height="194"
+                                            image={item.urlToImage}
+                                            alt="Article Image"
+                                        />
                                         <CardContent>
-                                            <Typography paragraph>Content:</Typography>
-                                            <Typography paragraph>
-                                                {item.content}
+                                            <Typography variant="body2" color="text.secondary">
+                                            {item.description}
                                             </Typography>
                                         </CardContent>
-                                    </Collapse>
-                                </Card>
-                            </Grid>
-                        )
-                    })
+                                        <CardActions disableSpacing>
+                                            {/* <IconButton aria-label="add to favorites">
+                                                <FavoriteIcon />
+                                            </IconButton> */}
+                                            <IconButton aria-label="share">
+                                                <a href={item.url} target="_blank">
+                                                    <ReadMoreIcon />
+                                                </a>
+                                            </IconButton>
+                                            <ExpandMore
+                                            expand={expanded}
+                                            onClick={handleExpandClick}
+                                            aria-expanded={expanded}
+                                            aria-label="show more"
+                                            >
+                                                <ExpandMoreIcon />
+                                            </ExpandMore>
+                                        </CardActions>
+                                        <Collapse in={expanded} timeout="auto" unmountOnExit>
+                                            <CardContent>
+                                                <Typography paragraph>Content:</Typography>
+                                                <Typography paragraph>
+                                                    {item.content}
+                                                </Typography>
+                                            </CardContent>
+                                        </Collapse>
+                                    </Card>
+                                </Grid>
+                            )
+                        })
+                        }   
+                    </>
                 }
             </Grid>
         </Box>
