@@ -11,15 +11,20 @@ import Footer from '../components/footer';
 const Dashboard =()=>{
     const getAuth = JSON.parse(localStorage.getItem("authUser"));
     const chartData={
-            labels:['Total News'],
+            labels:['Politics', 'Education', 'Government', 'Finance'],
             datasets:[{
-                label: 'News',
+                label: 'News Category',
                 data:[
                     100,
-                    
+                    80,
+                    90,
+                    60
                 ],
                 backgroundColor: [
                     'green',
+                    'red',
+                    '#6b5b95',
+                    'yellow'
                 ]
             }]
     }
@@ -41,7 +46,7 @@ const Dashboard =()=>{
                             }}
                         />
                     </Grid>
-                    <Grid xs={12} style={{textAlign: "center", marginTop: "40px"}}>
+                    <Grid item xs={12} style={{textAlign: "center", marginTop: "40px"}}>
                         <Button variant="text">
                             <Link to="/news" className="formFieldLink">
                                 Check Live News

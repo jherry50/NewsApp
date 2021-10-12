@@ -195,3 +195,12 @@ a.headLink{
   background-color: #6b5b95;
   color: white;
 }
+
+@media (max-width: 768px) {
+  .appAside{
+      display: none;
+  }
+  .appForm {
+    width: 100%;
+  }
+}

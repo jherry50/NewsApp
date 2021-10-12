@@ -18,7 +18,11 @@ const SignUp =()=>{
     const [formValue, setFormValue] = useState({...initialState});
 
     const handleSubmit = () => {
-        console.log(formValue);
+        if(formValue.email === ""|| formValue.password === "" || formValue.firstName === "" || formValue.lastName === "" ){
+            alert("Fields must not be empty");
+            return
+        }
+
         localStorage.setItem("authUser", JSON.stringify(formValue));
         alert("Account created successfully,proceed to login")
         history.push("/signin")
@@ -33,7 +37,6 @@ const SignUp =()=>{
 
     const handlePasswordChange = (e) =>{
         if(e){
-            
             let passwordValue = e.target.value;
             setFormValue((prevState) => ({ ...prevState, password: passwordValue}));
         }

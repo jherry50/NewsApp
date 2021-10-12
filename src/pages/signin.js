@@ -27,7 +27,6 @@ const SignIn =()=>{
                 alert("Invalid credential")
                 return
             }else if(formValue.email === getAuth.email && formValue.password === getAuth.password){
-                alert("proceed to dashboard");
                 history.push("/dashboard");
                 return
             }else{

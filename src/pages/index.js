@@ -7,7 +7,7 @@ import SignUp from "./signup";
 import Dashboard from "./dashboard";
 import News from "./news";
 
-
+//routes requiring authenticated user
 const RestrictedRoute = ({ component: Component, authUser, ...rest }) => (
   <Route
       {...rest}
