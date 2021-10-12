@@ -51,7 +51,7 @@ const News =()=>{
     const [cardData, setCardData] = useState([]);
 
     useEffect(()=>{
-        axios.get('https://newsapi.org/v2/everything?q=keyword&apiKey=eb27ad15bfda4460bb83113c1df0c449')
+        axios.get('http://anyorigin.com/go?url=https://newsapi.org/v2/everything?q=keyword&apiKey=eb27ad15bfda4460bb83113c1df0c449')
             .then(function (response) {
                 // handle success
                 console.log(response);

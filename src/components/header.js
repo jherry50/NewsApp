@@ -10,7 +10,7 @@ const Header = (props) =>{
         let getAuth = localStorage.getItem("authUser");
         if(getAuth){
             localStorage.removeItem("authUser");
-            history.push("/");
+            history.push("/signin");
         }
     }
     return(

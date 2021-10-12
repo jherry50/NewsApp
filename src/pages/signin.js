@@ -62,6 +62,7 @@ const SignIn =()=>{
             </div>
             <div className="appForm"> 
                 <div className="formCenter">
+                    <h2 style={{color: "#fff"}}>Login to Account</h2>
                     <form className="formFields" autoComplete="off">
                         <div className="formField">
                             <label className="formFieldLabel" htmlFor="email">
