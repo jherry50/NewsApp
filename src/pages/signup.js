@@ -14,10 +14,7 @@ const SignUp =()=>{
         agreed: false
     }
 
-    const buttonState = {
-        buttonState: false,
-        buttonText: "Submit"
-    }
+
     const [formValue, setFormValue] = useState({...initialState});
 
     const handleSubmit = () => {
@@ -66,7 +63,7 @@ const SignUp =()=>{
     return(
         <div className="formContainer">
             <div className="appAside">
-                <img src={SideImage} width="320" height="220"/>
+                <img src={SideImage} alt="Site" width="320" height="220"/>
             </div>
             <div className="appForm"> 
                 <div className="formCenter">
@@ -78,10 +75,10 @@ const SignUp =()=>{
                             </label>
                             <input
                             type="text"
-                            id="name"
+                            id="firstName"
                             className="formFieldInput"
                             placeholder="Enter your first name"
-                            name="name"
+                            name="firstName"
                             value={formValue.firstName}
                             onChange={(e) => handleFirstNameChange(e)}
                             />
@@ -92,10 +89,10 @@ const SignUp =()=>{
                             </label>
                             <input
                             type="text"
-                            id="name"
+                            id="lastName"
                             className="formFieldInput"
                             placeholder="Enter your last name"
-                            name="name"
+                            name="lastName"
                             value={formValue.lastName}
                             onChange={(e) => handleLastNameChange(e)}
                             />

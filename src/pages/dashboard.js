@@ -1,5 +1,5 @@
-import React, {useState} from "react";
-import {Bar, Pie, Line} from "react-chartjs-2";
+import React from "react";
+import {Bar} from "react-chartjs-2";
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import { Link } from "react-router-dom";

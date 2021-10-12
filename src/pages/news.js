@@ -13,26 +13,23 @@ import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import { red } from '@mui/material/colors';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import ReadMoreIcon from '@mui/icons-material/ReadMore';
 
 import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
+// import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import CircularProgress from '@mui/material/CircularProgress';
 
 import Header from '../components/header';
-import Footer from '../components/footer';
 
-const Item = styled(Paper)(({ theme }) => ({
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: 'center',
-  color: theme.palette.text.secondary,
-}));
+// const Item = styled(Paper)(({ theme }) => ({
+//   ...theme.typography.body2,
+//   padding: theme.spacing(1),
+//   textAlign: 'center',
+//   color: theme.palette.text.secondary,
+// }));
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
   return <IconButton {...other} />;
@@ -121,7 +118,7 @@ const News =()=>{
                                                 <FavoriteIcon />
                                             </IconButton> */}
                                             <IconButton aria-label="share">
-                                                <a href={item.url} target="_blank">
+                                                <a href={item.url} rel="noreferrer" target="_blank">
                                                     <ReadMoreIcon />
                                                 </a>
                                             </IconButton>

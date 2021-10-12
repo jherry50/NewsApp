@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Redirect, Route, Switch, NavLink } from "react-router-dom";
+import { Redirect, Route, Switch } from "react-router-dom";
 
 //import pages
 import SignIn from "./signin";
@@ -30,7 +30,6 @@ class Pages extends Component {
   render() {
     const {
         match,
-        location,
     } = this.props;
     const authUser = localStorage.getItem("authUser");
 

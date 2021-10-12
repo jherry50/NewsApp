@@ -12,20 +12,15 @@ const SignIn =()=>{
         password:""
     }
 
-    const buttonState = {
-        buttonState: false,
-        buttonText: "Submit"
-    }
     const [formValue, setFormValue] = useState({...initialState});
 
     const handleSubmit = (e) => {
-        debugger
         e.preventDefault();
         let getAuth = JSON.parse(localStorage.getItem("authUser"));
         console.log(formValue)
 
         if(getAuth !== null){
-            if(formValue.email == "" || formValue.password == ""){
+            if(formValue.email === "" || formValue.password === ""){
                 alert("All fields are required")
                 return
             }else if(formValue.email !== getAuth.email || formValue.password !== getAuth.password){
@@ -64,7 +59,7 @@ const SignIn =()=>{
     return(
         <div className="formContainer">
             <div className="appAside">
-                <img src={SideImage} width="320" height="220"/>
+                <img src={SideImage} alt="Site" width="320" height="220"/>
             </div>
             <div className="appForm"> 
                 <div className="formCenter">
