@@ -2,54 +2,31 @@ import React, {useState, useEffect} from "react";
 import axios from "axios";
 import moment from "moment";
 
-import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
-import Collapse from '@mui/material/Collapse';
 import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import { red } from '@mui/material/colors';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import ReadMoreIcon from '@mui/icons-material/ReadMore';
+import Tooltip from '@mui/material/Tooltip';
 
 import Box from '@mui/material/Box';
-// import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import CircularProgress from '@mui/material/CircularProgress';
 
 import Header from '../components/header';
 
-// const Item = styled(Paper)(({ theme }) => ({
-//   ...theme.typography.body2,
-//   padding: theme.spacing(1),
-//   textAlign: 'center',
-//   color: theme.palette.text.secondary,
-// }));
-const ExpandMore = styled((props) => {
-  const { expand, ...other } = props;
-  return <IconButton {...other} />;
-})(({ theme, expand }) => ({
-  transform: !expand ? 'rotate(0deg)' : 'rotate(180deg)',
-  marginLeft: 'auto',
-  transition: theme.transitions.create('transform', {
-    duration: theme.transitions.duration.shortest,
-  }),
-}));
-
 
 const News =()=>{
-    const [expanded, setExpanded] = useState(false);
-    const handleExpandClick = () => {
-      setExpanded(!expanded);
-    };
     const [loader, setLoader] = useState(true);
     const [cardData, setCardData] = useState([]);
 
+    //This is an effect to fetch the news api on page load
     useEffect(()=>{
         // const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
         // axios.get(`${proxyUrl}https://newsapi.org/v2/everything?q=keyword&apiKey=eb27ad15bfda4460bb83113c1df0c449`)
@@ -89,7 +66,7 @@ const News =()=>{
                             cardData.map((item,index) => {
                             return(
                                 <Grid key={index} item xs={12} md={6}>
-                                    <Card  sx={{ maxWidth: "100%", minHeight: 400 }}>
+                                    <Card  sx={{ maxWidth: "100%", height: "100%" }}>
                                         <CardHeader
                                             avatar={
                                             <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
@@ -111,33 +88,23 @@ const News =()=>{
                                             alt="Article Image"
                                         />
                                         <CardContent>
-                                            <Typography variant="body2" color="text.secondary">
+                                            <Typography variant="body1" color="text.secondary">
                                             {item.description}
+                                            </Typography>
+                                            <br/>
+                                            <Typography variant="body2" paragraph>
+                                                {item.content}
                                             </Typography>
                                         </CardContent>
                                         <CardActions disableSpacing>
-                                            <IconButton aria-label="share">
-                                                <a href={item.url} rel="noreferrer" target="_blank">
-                                                    <ReadMoreIcon />
-                                                </a>
-                                            </IconButton>
-                                            <ExpandMore
-                                            expand={expanded}
-                                            onClick={handleExpandClick}
-                                            aria-expanded={expanded}
-                                            aria-label="show more"
-                                            >
-                                                <ExpandMoreIcon />
-                                            </ExpandMore>
+                                            <Tooltip title="Read More">
+                                                <IconButton aria-label="share">
+                                                    <a href={item.url} rel="noreferrer" target="_blank">
+                                                        <ReadMoreIcon />
+                                                    </a>
+                                                </IconButton>
+                                            </Tooltip>
                                         </CardActions>
-                                        <Collapse in={expanded} timeout="auto" unmountOnExit>
-                                            <CardContent>
-                                                <Typography paragraph>Content:</Typography>
-                                                <Typography paragraph>
-                                                    {item.content}
-                                                </Typography>
-                                            </CardContent>
-                                        </Collapse>
                                     </Card>
                                 </Grid>
                             )

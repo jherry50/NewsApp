@@ -219,10 +219,6 @@ const SignUp =()=>{
                                     </Link> 
                                 </Button>     
                             </Stack>
-                            {/* <button onSubmit={handleSubmit} className="formFieldButton">Sign Up</button>{" "}
-                            <Link to="/signin" className="formFieldLink">
-                            I'm already member
-                            </Link> */}
                         </div>
                     </form>
                 </div>
