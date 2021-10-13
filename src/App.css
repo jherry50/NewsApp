@@ -29,6 +29,17 @@
   color: #61dafb;
 }
 
+/* Hide scrollbar for Chrome, Safari and Opera */
+body::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+body {
+-ms-overflow-style: none;  /* IE and Edge */
+scrollbar-width: none;  /* Firefox */
+}
+
 a{
   text-decoration: none;
 }
@@ -58,12 +69,23 @@ a.headLink{
   display: flex;
 }
 
-.appAside {
+/* .appAside {
   width: 50%;
   background-color: #6b5b95;
   display: flex;
   justify-content: center;
   align-items: center;
+} */
+
+.appAside {
+  width: 50%;
+  background-color: white;
+  background-image: url('./assets/read.jpeg');
+  background-position: center;
+  background-size: cover;
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
 }
 
 .appForm {
@@ -117,11 +139,11 @@ a.headLink{
 }
 .formFieldInput {
   width: 85%;
-  background-color: transparent;
+  background-color: transparent !important;
   border: none;
-  color: white;
+  color: white !important;
   outline: none;
-  border-bottom: 1px solid #445366;
+  border-bottom: 1px solid #445366 !important;
   font-size: 1em;
   font-weight: 300;
   padding-bottom: 10px;
@@ -133,7 +155,7 @@ a.headLink{
 }
 
 .formFieldButton {
-  background-color: #6b5b95 !important;
+  background-color: #D4022F !important;
   color: white !important;
   border: none !important;
   outline: none !important;
@@ -144,15 +166,15 @@ a.headLink{
 }
 
 .formFieldLink {
-  color: #66707d;
+  color: #D4022F;
   text-decoration: none;
   display: inline-block;
-  border-bottom: 1.5px solid #6b5b95;
+  border-bottom: 1.5px solid #D4022F;
   padding-bottom: 5px;
 }
 
 .formFieldCheckboxLabel {
-  color: #646f7d;
+  color: #D4022F;
   font-size: 0.9em;
 }
 
@@ -163,7 +185,7 @@ a.headLink{
 
 .formFieldTermsLink {
   color: white;
-  border-bottom: 1px solid #6b5b95;
+  border-bottom: 1px solid #D4022F;
   text-decoration: none;
   display: inline-block;
   padding-bottom: 2px;
@@ -172,11 +194,13 @@ a.headLink{
 
 .dashboardContainer{
   padding: 10px 20px;
+  height: 100vh;
+  overflow-y: scroll;
 }
 
 .footer{
-  position: absolute;
-  bottom: 0;
+  /* position: absolute;
+  bottom: 0; */
   background-color: lightgray;
   width: 100%;
   text-align: center;
@@ -192,7 +216,8 @@ a.headLink{
   display: flex;
   justify-content: space-between;
   padding: 10px 20px;
-  background-color: #6b5b95;
+  /* background-color: #6b5b95; */
+  background-color: #D4022F;
   color: white;
 }
 
@@ -202,9 +227,12 @@ a.headLink{
   }
   .appForm {
     width: 100%;
+    background-image: url('./assets/read.jpeg');
+    background-position: center;
+    background-size: cover;
   }
   .formFieldButton {
-    background-color: #6b5b95 !important;
+    background-color: #D4022F !important;
     color: white !important;
     border: none !important;
     outline: none !important;

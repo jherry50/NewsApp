@@ -2,8 +2,8 @@ import React, {useState} from "react";
 import { Link, useHistory } from "react-router-dom";
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
 
-import SideImage from "../assets/imgg.jpg";
 
 const SignIn =()=>{
     const history = useHistory();
@@ -58,7 +58,6 @@ const SignIn =()=>{
     return(
         <div className="formContainer">
             <div className="appAside">
-                <img src={SideImage} alt="Site" width="320" height="220"/>
             </div>
             <div className="appForm"> 
                 <div className="formCenter">
@@ -68,29 +67,38 @@ const SignIn =()=>{
                             <label className="formFieldLabel" htmlFor="email">
                             E-Mail Address
                             </label>
-                            <input
-                            type="email"
-                            id="email"
-                            className="formFieldInput"
-                            placeholder="Enter your email"
-                            name="email"
-                            value={formValue.email}
-                            onChange={(e) => handleEmailChange(e)}
+                            <TextField
+                                type="email"
+                                id="email"
+                                className="formFieldInput"
+                                placeholder="Enter your email"
+                                name="email"
+                                value={formValue.email}
+                                onChange={(e) => handleEmailChange(e)}
+                                variant="standard"
+                                InputProps={{
+                                    style:{color: 'white'}
+                                  }}
                             />
+                        
                         </div>
 
                         <div className="formField">
                             <label className="formFieldLabel" htmlFor="password">
                             Password
                             </label>
-                            <input
-                            type="password"
-                            id="password"
-                            className="formFieldInput"
-                            placeholder="Enter your password"
-                            name="password"
-                            value={formValue.password}
-                            onChange={(e) => handlePasswordChange(e)}
+                             <TextField
+                                type="password"
+                                id="password"
+                                className="formFieldInput"
+                                placeholder="Enter your password"
+                                name="password"
+                                value={formValue.password}
+                                onChange={(e) => handlePasswordChange(e)}
+                                variant="standard"
+                                InputProps={{
+                                    style:{color: 'white'}
+                                  }}
                             />
                         </div>
 

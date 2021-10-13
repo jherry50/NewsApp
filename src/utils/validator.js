@@ -11,23 +11,13 @@ const validators = {
       let mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
       return mailformat.test(value) === false ? false : true;
     },
-    isStrongPassword: (value = "") => {
-      let passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{5,}$/gm;
-      return passwordRegex.test(value) === false ? false : true;
-    },
-    isSamePassword: (password, confirmPassword) => {
-      if (password === "" || confirmPassword === "")
-        return false;
-  
-      return password === confirmPassword === false ? false : true;
-    },
-    isNumeric: (value = 0) => {
-      if(isNaN(value) || value < 1){
-        return false
-      }else{
-        return true
-      }
-    },
+    isLength: (value = 0) => {
+        if(value.length >= 6){
+          return true
+        }else{
+          return false
+        }
+      },
   }
   
   export default validators;

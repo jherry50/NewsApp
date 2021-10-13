@@ -51,7 +51,9 @@ const News =()=>{
     const [cardData, setCardData] = useState([]);
 
     useEffect(()=>{
-        axios.get('http://anyorigin.com/go?url=https://newsapi.org/v2/everything?q=keyword&apiKey=eb27ad15bfda4460bb83113c1df0c449')
+        // const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+        // axios.get(`${proxyUrl}https://newsapi.org/v2/everything?q=keyword&apiKey=eb27ad15bfda4460bb83113c1df0c449`)
+        axios.get('https://newsapi.org/v2/everything?q=keyword&apiKey=eb27ad15bfda4460bb83113c1df0c449')
             .then(function (response) {
                 // handle success
                 console.log(response);
@@ -91,7 +93,7 @@ const News =()=>{
                                         <CardHeader
                                             avatar={
                                             <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-                                                R
+                                                {item.author.charAt(0)}
                                             </Avatar>
                                             }
                                             action={
@@ -114,9 +116,6 @@ const News =()=>{
                                             </Typography>
                                         </CardContent>
                                         <CardActions disableSpacing>
-                                            {/* <IconButton aria-label="add to favorites">
-                                                <FavoriteIcon />
-                                            </IconButton> */}
                                             <IconButton aria-label="share">
                                                 <a href={item.url} rel="noreferrer" target="_blank">
                                                     <ReadMoreIcon />
