@@ -8,6 +8,7 @@ const validators = {
       return value === 0 ? false : true;
     },
     isValidEmail: (value = "") => {
+        // eslint-disable-next-line
       let mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
       return mailformat.test(value) === false ? false : true;
     },
