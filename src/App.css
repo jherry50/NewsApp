@@ -230,6 +230,7 @@ a.headLink{
     background-image: url('./assets/read.jpeg');
     background-position: center;
     background-size: cover;
+    box-shadow: inset 0 0 0 2000px rgba(10, 0, 1, 0.4);
   }
   .formFieldButton {
     background-color: #D4022F !important;
