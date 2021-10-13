@@ -34,6 +34,9 @@ const SignUp =()=>{
         if(formValue.email === ""|| formValue.password === "" || formValue.firstName === "" || formValue.lastName === "" ){
             alert("Fields must not be empty");
             return
+        }else if(formStates.firstnameError === true || formStates.lastnameError === true || formStates.emailError === true || formStates.passwordError === true ){
+            alert("One or more field(s) is invalid");
+            return
         }
         if(formValue.agreed === false){
             alert("Must agree to terms and condition");
